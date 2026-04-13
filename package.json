@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev:fe": "cd fe && npm run dev",
-    "dev:be": "docker compose up"
+    "dev:be": "docker compose up",
+    "docker:dev": "docker compose up -d --build",
+    "docker:prod": "docker compose -f docker-compose.prod.yml up -d --build",
+    "docker:down": "docker compose down"
   },
   "author": "Illia S",
   "license": "ISC",

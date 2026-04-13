@@ -24,35 +24,31 @@ services:
   backend:
     build:
       context: ./be
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: backend
     restart: unless-stopped
     ports:
       - "5000:5000"
-    volumes:
-      - ./be:/server
-      - /server/node_modules
     environment:
       - MONGO_URI=mongodb://user:root@mongodb:27017/db?authSource=admin
-    command: sh -c "npx ts-node src/seeders/product.seeder.ts && npm run dev"
+    command: sh -c "npx ts-node src/seeders/product.seeder.ts && npm run start"
     depends_on:
       mongodb:
         condition: service_healthy
     networks:
       - mongodb_network
-  react:
+  nginx:
     build:
       context: ./fe
-      dockerfile: Dockerfile.dev
-    container_name: frontend
+      dockerfile: Dockerfile
+    image: react-app-prod
     ports:
-      - "5173:5173"
-    volumes:
-      - ./fe:/app
-      - /app/node_modules
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-      - VITE_API_URL=http://localhost:5000/api
+      - "80:80"
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - mongodb_network    
 volumes:
   mongodb_data:
     driver: local

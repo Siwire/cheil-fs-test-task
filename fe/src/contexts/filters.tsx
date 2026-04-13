@@ -1,7 +1,7 @@
 import { Capacity, EnergyClass, Features } from '../interfaces/product';
 import { createContext, PropsWithChildren, useContext, useMemo, useState } from 'react';
 
-type Sort = 'price' | 'capacity';
+type Sort = 'price_desc' | 'price_asc' | 'capacity_desc' | 'capacity_asc';
 
 export interface FiltersContextType {
   query: string;

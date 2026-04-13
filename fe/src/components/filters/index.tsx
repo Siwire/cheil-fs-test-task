@@ -2,8 +2,10 @@ import { Dropdown, DropdownOption } from '../dropdown';
 import { Search } from '../search';
 
 const sortOptions: DropdownOption[] = [
-  { name: 'price', title: 'Cena' },
-  { name: 'capacity', title: 'Pojemność' },
+  { name: 'price_desc', title: 'Cena: od najwyżej' },
+  { name: 'price_asc', title: 'Cena: od najniżej' },
+  { name: 'capacity_desc', title: 'Pojemność: od najwyższej' },
+  { name: 'capacity_asc', title: 'Pojemność: od najniższej' },
 ];
 
 const featuresOptions: DropdownOption[] = [
