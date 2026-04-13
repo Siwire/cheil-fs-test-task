@@ -28,3 +28,12 @@ export interface IProduct {
     validTo: Date;
   };
 }
+
+export interface PaginatedResponse<T> {
+  items: T[];
+  totalPages: number;
+  currentPage: number;
+  totalItems: number;
+}
+
+export type ProductResponse = PaginatedResponse<IProduct>;

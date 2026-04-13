@@ -6,7 +6,6 @@ import svgrPlugin from 'vite-plugin-svgr';
 // https://vitejs.dev/config/
 // eslint-disable-next-line import/no-unused-modules
 export default defineConfig({
-  envDir: './env',
   plugins: [react(), tsconfigPaths(), svgrPlugin()],
   /* If proxy is needed
   server: {
